@@ -26,13 +26,9 @@ namespace ParameterSettingsDemo.Controllers
 
         public IActionResult Index()
         {
-            //string defaultLogLevel = config.Value.Logging.LogLevel.Default;
-            //string allowedHosts = config.Value.AllowedHosts;
+            string testSetting = ConfigurationHelper.GetTestSetting(config);
 
-            string defaultLogLevel = ConfigurationAbstraction.GetDefaultLogLevel(config);
-            string allowedHosts = config.GetValue<string>("AllowedHosts");
-
-            return View(new IndexViewModel { LoggingLevel = defaultLogLevel, AllowedHosts = allowedHosts });
+            return View(new IndexViewModel { TestSetting = testSetting});
         }
 
         public IActionResult Privacy()
