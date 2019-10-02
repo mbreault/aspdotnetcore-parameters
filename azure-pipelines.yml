@@ -17,8 +17,12 @@ steps:
   workingDirectory: ParameterSettingsDemo
   displayName: 'dotnet build $(buildConfiguration)'
 
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: ParameterSettingsDemo
+    targetFolder: '$(Build.ArtifactStagingDirectory)'    
+
 - task: PublishBuildArtifacts@1
   inputs:
-    workingDirectory: ParameterSettingsDemo
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
