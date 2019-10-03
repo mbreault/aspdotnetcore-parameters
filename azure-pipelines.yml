@@ -14,13 +14,10 @@ variables:
 
 steps:
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '*.sln'
-    
 - task: MSBuild@1
   inputs:
     solution: '*.sln' 
+    restoreNugetPackages: true 
 
 - task: CopyFiles@2
   inputs:
