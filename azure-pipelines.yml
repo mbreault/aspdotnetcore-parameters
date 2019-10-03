@@ -23,14 +23,17 @@ steps:
   inputs:
     restoreSolution: '*.sln'
     
+steps:
 - task: MSBuild@1
+  displayName: 'Build Solution'
   inputs:
-    solution: '*.sln' 
-
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: ParameterSettingsDemo
-    targetFolder: '$(Build.ArtifactStagingDirectory)'    
+    solution: '*.sln'
+    msbuildArchitecture: x64
+    platform: 'Any CPU'
+    configuration: Release
+    msbuildArguments: '/p:DeployOnBuild=true /p:PublishProfile="Release Package" /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
+    logProjectEvents: true
+    createLogFile: true  
 
 - task: PublishBuildArtifacts@1
   inputs:
