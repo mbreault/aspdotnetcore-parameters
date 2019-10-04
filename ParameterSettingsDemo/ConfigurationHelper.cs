@@ -13,16 +13,11 @@ namespace ParameterSettingsDemo
             return Environment.GetEnvironmentVariable(key);
         }
 
-       public static string GetTestSetting(IConfiguration configuration)
+       public static string ApplicationInsightsInstrumentationKey(IConfiguration configuration)
         {
             string returnValue = "";
 
-            returnValue = GetEnvVar("ApplicationInsights_InstrumentationKey");
-
-            if (String.IsNullOrEmpty(returnValue))
-            {
-                returnValue = configuration.GetValue<string>("ApplicationInsights_InstrumentationKey");
-            }
+            returnValue = configuration.GetSection("ApplicationInsights").GetValue<string>("InstrumentationKey");
 
             return returnValue;
         }

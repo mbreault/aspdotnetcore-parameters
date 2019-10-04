@@ -26,9 +26,9 @@ namespace ParameterSettingsDemo.Controllers
 
         public IActionResult Index()
         {
-            string testSetting = ConfigurationHelper.GetTestSetting(config);
+            string applicationInsightsInstrumentationKey = ConfigurationHelper.ApplicationInsightsInstrumentationKey(config);
 
-            return View(new IndexViewModel { TestSetting = testSetting});
+            return View(new IndexViewModel { ApplicationInsightsInstrumentationKey = applicationInsightsInstrumentationKey });
         }
 
         public IActionResult Privacy()
