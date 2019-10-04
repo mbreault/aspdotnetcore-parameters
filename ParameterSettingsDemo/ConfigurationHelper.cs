@@ -17,11 +17,11 @@ namespace ParameterSettingsDemo
         {
             string returnValue = "";
 
-            returnValue = GetEnvVar("TEST_SETTING");
+            returnValue = GetEnvVar("ApplicationInsights_InstrumentationKey");
 
             if (String.IsNullOrEmpty(returnValue))
             {
-                returnValue = configuration.GetValue<string>("TestSetting");
+                returnValue = configuration.GetValue<string>("ApplicationInsights_InstrumentationKey");
             }
 
             return returnValue;
